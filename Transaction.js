@@ -22,7 +22,7 @@ class Transaction extends Database {
   }
 
   get(key) {
-    if (!this.state[key]) {
+    if (this.state[key] === undefined) {
       return this.stack[this.stack.length - 1].state[key];
     }
 
@@ -34,7 +34,7 @@ class Transaction extends Database {
       this.state[key] = null;
       return;
     }
-    
+
     let value = this.state[key];
     this.state[key] = null;
 
